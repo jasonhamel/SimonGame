@@ -6,4 +6,12 @@ function nextSequence() {
 }
 
 let randomChosenColour = buttonColours[nextSequence()];
-console.log(randomChosenColour);
+
+let toFlash = $("#" + randomChosenColour);
+let audio = new Audio(
+  "Reference Files/Simon Game Challenge Starting Files/sounds/" +
+    randomChosenColour +
+    ".mp3"
+);
+toFlash.fadeOut(50).fadeIn(50);
+audio.play();

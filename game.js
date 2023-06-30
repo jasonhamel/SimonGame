@@ -1,5 +1,6 @@
 let buttonColours = ["red", "blue", "green", "yellow"];
 let gamePattern = [];
+let userClickedPattern = [];
 function nextSequence() {
   let randomNumber = Math.round(Math.random() * 3);
   return randomNumber;
@@ -15,3 +16,8 @@ let audio = new Audio(
 );
 toFlash.fadeOut(50).fadeIn(50);
 audio.play();
+
+$(".btn").click(function (event) {
+  let userChosenColour = event.target.id;
+  userClickedPattern.push(userChosenColour);
+});

@@ -19,10 +19,20 @@ function playSound(name) {
   audio.play();
 }
 
+function animatePress(currentColour) {
+  let currentButton = $("#" + currentColour);
+  currentButton.addClass("pressed");
+  setTimeout(function () {
+    currentButton.removeClass("pressed");
+  }, 100);
+}
+
 nextSequence();
 
 $(".btn").click(function (event) {
+  console.log(event);
   let userChosenColour = event.target.id;
   userClickedPattern.push(userChosenColour);
   playSound(userChosenColour);
+  animatePress(userChosenColour);
 });

@@ -32,12 +32,30 @@ function animatePress(currentColour) {
   }, 100);
 }
 
+function startOver() {
+  level = 0;
+  gamePattern = [];
+  correctAnswers = 0;
+  userClickedPattern = [];
+}
+
 function checkAnswer(currentLevel) {
   if (userClickedPattern[currentLevel] == gamePattern[currentLevel]) {
     console.log("yes");
     correctAnswers++;
   } else {
     console.log("wrong");
+    let audio = new Audio(
+      "Reference Files/Simon Game Challenge Starting Files/sounds/wrong.mp3"
+    );
+    audio.play();
+    let status = $("body");
+    status.addClass("game-over");
+    setTimeout(function () {
+      status.removeClass("game-over");
+    }, 200);
+    $("h1").html("Game Over, Press Any Key to Restart");
+    startOver();
   }
 }
 
